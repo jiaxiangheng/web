@@ -11,10 +11,12 @@
         <a href="#"><img src="img/logo.png" class="logo" width="76" height="36"></a>
         <div id="navLeft" class="navLeft">
             <ul>
-                <li class=" navli line"><a class="nav-span" href="" title="旅游目的地">目的地</a></li>
-                <li class=" navli"><a class="nav-span" href="" title="旅游锦囊">锦囊</a></li>
-                <li class=" navli"><a class="nav-span" href="" title="旅游行程">行程助手</a></li>
-                <li id="community" class=" navli">
+                <li class="navli">
+                    <span class="line"></span>
+                    <a class="nav-span" href="" title="旅游目的地">目的地</a></li>
+                <li class="navli"><span class="line"></span><a class="nav-span" href="" title="旅游锦囊">锦囊</a></li>
+                <li class="navli"><span class="line"></span><a class="nav-span" href="" title="旅游行程">行程助手</a></li>
+                <li id="community" class="navli"><span class="line"></span>
                     <a class="nav-span" href="" title="社区">社区<i class="iconfont icon-jiantouxia"></i></a>
                     <ul id="comList" class="comList">
                         <div class="triangle"></div>
@@ -75,10 +77,10 @@
                         <li><i class="iconfont icon-shenghuoshiyanshi"></i>JNE旅行生活美学</li>
                     </ul>
                 </li>
-                <li class="navli" title ="旅游自由行"><a class="nav-span" href="">最世界·自由行<span class="icon-recommend"><i></i></span></a></li>
-                <li class=" navli"><a class="nav-span" href="" title="酒店">酒店</a><span class="down"></span></li>
-                <li class=" navli"><a class="nav-span" href="" title="机票">机票</a><span class="down"></span></li>　
-                <li class=" navli" id="navli8"><a class="nav-span" href="" title="预订">预订<i class="iconfont icon-jiantouxia"></i></a>
+                <li class="navli" title ="旅游自由行"><span class="line"></span><a class="nav-span" href="">最世界·自由行<span class="icon-recommend"><i></i></span></a></li>
+                <li class="navli"><span class="line"></span><a class="nav-span" href="" title="酒店">酒店</a><span class="down"></span></li>
+                <li class="navli"><span class="line"></span><a class="nav-span" href="" title="机票">机票</a><span class="down"></span></li>　
+                <li class="navli" id="navli8"><span class="line"></span><a class="nav-span" href="" title="预订">预订<i class="iconfont icon-jiantouxia"></i></a>
                 <ul id="resUl" class="resUl">
                     <div class="triangle"></div>
                     <li><a href=""><i class="iconfont icon-chengshi"></i>特价酒店</a></li>
@@ -103,20 +105,20 @@
                     <a class="otherlogin-link" href="javascript:;"><i class="iconfont icon-qq"></i></a>
                     <a class="otherlogin-link" href="javascript:;"><i class="iconfont icon-weibo"></i></a>
                     <a class="otherlogin-link" href="javascript:;"><i class="iconfont icon-weixin"></i></a>
-                    <a href="#">注册</a>
-                    <a href="#">登录</a>
+                    <a href="register.html">注册</a>
+                    <a href="login.html">登录</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div id="banner" class="banner">
-    <div class="imgWrap">
-        <!--<div><img src="img/1.jpg" alt=""/></div>-->
-        <!--<div><img src="img/2.jpg" alt=""/></div>-->
-        <!--<div><img src="img/3.jpg" alt=""/></div>-->
-        <!--<div><img src="img/4.jpg" alt=""/></div>-->
-        <!--<div><img src="img/5.jpg" alt=""/></div>-->
+    <div class="inner">
+        <div><img src="img/1.jpg" alt=""/></div>
+        <div><img src="img/2.jpg" alt=""/></div>
+        <div><img src="img/3.jpg" alt=""/></div>
+        <div><img src="img/4.jpg" alt=""/></div>
+        <div><img src="img/5.jpg" alt=""/></div>
     </div>
     <ul>
         <!--<li class="bg"></li>
@@ -128,8 +130,8 @@
     <a href="javascript:;" class="btnLeft"></a>
     <a href="javascript:;" class="btnRight"></a>
     <div class="textbtn" id="textbtn">
-            <span><i id="btnI">1</i><em>/5</em></span>
-            <span class="con" id="con">
+            <span class="btnI" id="btnI"><i>1</i><em>/5</em></span>
+            <span class="con" id="conbtn">
                 <a href="" id="btnA"><p>第一张图介绍风景这边独好</p><p>adsyun1</p></a>
             </span>
     </div>
@@ -145,7 +147,7 @@
         <em class="arrow"></em>
         <div class="panel-inner">
             <form class="place_search_form" target="_blank" action="" method="post">
-                <input class="placesearch_txt" id="placesearch_txt" name="ads"type="text" value="新西兰">
+                <input class="placesearch_txt" id="placesearch_txt" name="ads" type="text" value="新西兰">
                 <button class="selbtn" type="submit">搜索</button>
             </form>
         </div>
@@ -241,7 +243,6 @@
                         <a class="close iconfont icon-wrong" href="javascript:;" title="并不感兴趣"></a>
                         <div class="imgcont" id="imgcont">
                             <a href="">
-                                <div class="p"></div>
                                 <div class="tag" id="tag">
                                     <span><i class="iconfont icon-youji"></i></span>
                                     <span class="bt">游记</span>
@@ -316,8 +317,8 @@
                                 <p>拥有穷游账号，获得更准确的推荐</p>
                             </div>
                             <div class="login-link">
-                                <a href="javascript:;" class="btn">立即注册</a>
-                                <span>已有帐号？<a href="javascript:;">登录</a></span>
+                                <a href="register.html" class="btn">立即注册</a>
+                                <span>已有帐号？<a href="login.html">登录</a></span>
                             </div>
                             <div class="auth-login">
                                 <a class="register-mail" href="javascript:;">使用邮箱注册</a>
@@ -444,38 +445,22 @@
                             <div class="number">
                                 <div class="hour">
                                     <div class="hour-num">
-                                        <span class="num-top">2</span>
-                                        <span class="num-bottom"><i>2</i></span>
-                                    </div>
-                                    <div class="hour-num right">
-                                        <span class="num-top">3</span>
-                                        <span class="num-bottom"><i>3</i></span>
-
+                                        <span class="num-top" id="num-hour"></span>
                                         <div class="colon">:</div>
                                     </div>
-
                                 </div>
                                 <div class="minute">
                                     <div class="hour-num">
-                                        <span class="num-top">5</span>
-                                        <span class="num-bottom"><i>5</i></span>
-                                    </div>
-                                    <div class="hour-num right">
-                                        <span class="num-top">7</span>
-                                        <span class="num-bottom"><i>7</i></span>
-
+                                        <span class="num-top" id="num-minute"></span>
                                         <div class="colon">:</div>
                                     </div>
+
                                 </div>
                                 <div class="second">
                                     <div class="hour-num">
-                                        <span class="num-top">0</span>
-                                        <span class="num-bottom"><i>0</i></span>
+                                        <span class="num-top" id="num-second"></span>
                                     </div>
-                                    <div class="hour-num right">
-                                        <span class="num-top">1</span>
-                                        <span class="num-bottom"><i>1</i></span>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -499,7 +484,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="" class="click">
                             <div class="discount">
                                 <img src="img/img1.jpg" alt=""/>
 

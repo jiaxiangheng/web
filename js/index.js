@@ -1,22 +1,24 @@
 /**
  * 选项卡
  */
-window.onload = function () {
+(function () {
     var oBanner = document.getElementById('banner');
-    var oImgWrap = oBanner.getElementsByTagName('div')[0];
-    var aDiv = oImgWrap.getElementsByTagName('div');
-    var aImg = oImgWrap.getElementsByTagName('img');
+    var bannerInner = oBanner.getElementsByTagName('div')[0];
+    var aDiv = bannerInner.getElementsByTagName('div');
+    var aImg = bannerInner.getElementsByTagName('img');
     var oUl = oBanner.getElementsByTagName('ul')[0];
-    var aLi = oUl.getElementsByTagName('li');
+    var aLi=oUl.getElementsByTagName('li');
     var oBtnLeft = oBanner.getElementsByTagName('a')[0];
     var oBtnRight = oBanner.getElementsByTagName('a')[1];
+
+    var textbtn=document.getElementById("textbtn");
+    var conbtn=document.getElementById("conbtn");
     var btnI=document.getElementById("btnI");
     var btnA=document.getElementById("btnA");
-    var autoTimer = null;
-    var step = 0;
-    var interval = 2000;
-    getData();
-    function getData() {
+
+    var step=0;
+    var data=null,count=null;
+    ~function getData() {
         var xml = new XMLHttpRequest();
         xml.open('get', 'json/data.txt', false);
         xml.onreadystatechange = function () {
@@ -25,25 +27,27 @@ window.onload = function () {
             }
         };
         xml.send(null);
-    }
-
-    //2.绑定数据
-    bind();
-    function bind() {
-        var str = '';
-        //var str2 = '';
+    }();
+    ~function bind() {
+        var str = '',
+            str2 = '',
+            str3='';
         for (var i = 0; i < data.length; i++) {
             var curData = data[i];
-            str += '<div><img src="" realImg="' + curData.imgSrc + '" alt=""/></div>';
-            //str2+='<span><i>'+curData.id+'</i><em>/5</em></span>';
+            str += '<div><img src="" realImg="' + curData["imgSrc"] + '" alt=""/></div>';
+
         }
-        oImgWrap.innerHTML += str;
-        //btnI.innerHTML+=str2;
-    }
+        str+='<div><img src="" realImg="' + data[0]["imgSrc"] + '" alt=""/></div>';
+        /*str2 += '<span class="btnI" id="btnI"><i>'+data[0]["id"]+'</i><em>/'+data.length+'</em></span>';
+        str3+='<span class="con" id="conbtn"><a href=""><p>'+data[0]["desc"]+'</p><p>'+data[0]["author"]+'</p></a></span>';*/
+        bannerInner.innerHTML+= str;
+
+        count=data.length+1;
+        utils.css(bannerInner,"width",count*1903);
+    }();
 
     //3.延迟加载
-    lazyImg();
-    function lazyImg() {
+    ~function lazyImg() {
         for (var i = 0; i < aImg.length; i++) {
             (function (index) {
                 var curImg = aImg[index];
@@ -54,80 +58,40 @@ window.onload = function () {
                     oImg = null;
                     //默认先让第一张图片显示
                     utils.css(aDiv[0], 'zIndex', 1);
-                    zhufengAnimate(aDiv[0], {opacity: 1}, 1000)
                 }
             })(i);
         }
-    }
-
-    window.clearInterval(autoTimer);
-    autoTimer = setInterval(setMove, interval);
+    }();
     function setMove() {
-        if (step >= aDiv.length - 1) {
-            step = -1;
+        if (step >= (count - 1)) {
+            step = 0;
+            utils.css(bannerInner,"left",0);
         }
         step++;
-        setBanner();
+        zhufengAnimate(bannerInner,{left:-step*1903},1000,0);
+        bannerTip();
     }
-
-    function setBanner() {
-        for (var i = 0; i < aDiv.length; i++) {
-            var curDiv = aDiv[i];
-            if (i === step) {
-                utils.css(curDiv, 'zIndex', 1);
-                zhufengAnimate(oImgWrap, {'left': -step*1903}, 800, function () {
-                    var siblings = utils.siblings(this);
-                    for (var i = 0; i < siblings.length; i++) {
-                        utils.css(siblings[i], {'opacity': 1,"zIndex":1});
-                    }
-                });
-                continue;
-            }
-            utils.css(curDiv, 'zIndex', 1)
-        }
-        //bannerTip();
-    }
-
     function bannerTip(){
         var tmpStep=step>=data.length?0:step;
         for(var i=0; i<=data.length; i++){
-            var curLi=data[i];
+            var curData=data[i];
             if(i===tmpStep){
-                btnI.innerHTML=curLi.id;
-                btnA.innerHTML='<p>'+curLi["desc"]+'</p><p>'+curLi["author"]+'</p>'
+                btnI.innerHTML='<i>'+curData["id"]+'</i><em>/'+data.length+'</em>';
+                btnA.innerHTML='<p>'+curData["desc"]+'</p><p>'+curData["author"]+'</p>'
             }
         }
     }
-    /*handleChange();
-     function handleChange(){
-     for(var i=0; i<aLi.length; i++){
-     var curLi=aLi[i];
-     curLi.index=i;
-     curLi.onclick=function(){
-     step=this.index;
-     setBanner();
-     }
-     }
-     }*/
-    oBanner.onmouseover=function(){
-        clearInterval(autoTimer);
-        oBtnLeft.style.display='block';
-        oBtnRight.style.display='block';
-    };
-    oBanner.onmouseout=function(){
-        autoTimer=setInterval(setMove,interval);
-        oBtnLeft.style.display='none';
-        oBtnRight.style.display='none';
-    };
     oBtnRight.onclick = setMove;
     oBtnLeft.onclick = function () {
         if (step <= 0) {
-            step = aDiv.length;
+            step = count-1;
+            utils.css(bannerInner,"left",-step*1903);
         }
         step--;
-        setBanner();
+        zhufengAnimate(bannerInner,{left:-step*1903},1000,0);
+        //bannerTip();
     }
-};
+})();
 /**
  * 二级菜单
  */
@@ -192,11 +156,11 @@ window.onload = function () {
 
         })
     }
-})()
+})();
 /**
  * 搜索目的地
  */
-function search(){
+~function search(){
     var placesearch_txt = document.getElementById("placesearch_txt");
     var history = document.getElementById("history");
     document.body.onclick = function (ev) {
@@ -209,10 +173,10 @@ function search(){
             history.style.display = "none"
         }
     }
-};
-search();
+}();
 
-function bg (){
+
+~function(){
     var inner=document.getElementById("inter-inner");
     var oLis=inner.getElementsByTagName("li");
     var imgmasks=utils.getByClass(inner,"imgmask");
@@ -221,15 +185,41 @@ function bg (){
         oLis[i].index=i;
         oLis[i].onmouseenter=function(){
             liClose[this.index].style.display="block";
-            zhufengAnimate(imgmasks[this.index],{"display":"block","width":275,"height":185,"opacity":0.6},100,2)
+            liClose[this.index].style.zIndex=600;
+            //utils.addClass(imgmasks[this.index],"imgmask1");
+            //zhufengAnimate(imgmasks[this.index],{"display":"block","left":-55,"opacity":0.8},100,0)
         };
         oLis[i].onmouseleave=function(){
             liClose[this.index].style.display="none";
-            imgmasks[this.index].style.display="none";
+            //imgmasks[this.index].style.display="none";
+            //imgmasks[this.index].style.display="none";
         }
     }
-}
-bg ();
+}();
+/*倒计时*/
+~function(){
+    var numTop=document.getElementById("num-hour");
+    var numMinute=document.getElementById("num-minute");
+    var numSecond=document.getElementById("num-second");
+    function toDou(n){
+        return n<10?'0'+n:''+n;
+    }
+    function romainTime(){
+        var oDate=new Date();
+        var nowTime=oDate.getTime();
+        var tarTime=new Date('2016/06/28 00:00:00');
+        var s=Math.floor((tarTime.getTime()-nowTime)/1000);
+        var h=Math.floor(s/3600);
+        numTop.innerHTML=toDou(h);
+        s%=3600;
+        var m=Math.floor(s/60);
+        numMinute.innerHTML=toDou(m);
+        s%=60;
+        numSecond.innerHTML=toDou(s);
+    }
+    romainTime();
+    setInterval(romainTime,1200);
+}()
 
 
 

@@ -336,7 +336,6 @@ var utils = (function () {
         prepend: prepend,
         insertBefore: insertBefore,
         insertAfter: insertAfter
-
     }
 })();
 
