@@ -92,17 +92,24 @@ ul, li {
 .navli:hover .line{
     height: 3px;
 }
-/*.navli:before {
-    content: "";
-    display: block;
+.ico{
     position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: #FFF;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-}*/
+    left:50px;
+    top: 23px;
+    background: url("../img/ico.png") no-repeat center center;
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+.icod{
+    position: absolute;
+    left:50px;
+    top: 23px;
+    background: url("../img/ico.png") no-repeat center center;
+    width: 16px;
+    height: 16px;
+    display: block;
+}
 
 .iconfont, .vm {
     vertical-align: middle
@@ -110,10 +117,10 @@ ul, li {
 
 @font-face {
     font-family: home_font;
-    src: url(http://home.qyerstatic.com/common/fonts/home_font.eot?v=1461812276153);
-    src: url(http://home.qyerstatic.com/common/fonts/home_font.eot?#iefix) format('embedded-opentype'),
-    url(http://home.qyerstatic.com/common/fonts/home_font.woff?v=1461812276153) format('woff'),
-    url(http://home.qyerstatic.com/common/fonts/home_font.ttf?v=1461812276153) format('truetype'),
+    src: url(../img/home_font.eot?v=1461812276153);
+    src: url(../img/home_font.eot?#iefix) format('embedded-opentype'),
+    url(../img/home_font.woff?v=1461812276153) format('woff'),
+    url(../img/home_font.ttf?v=1461812276153) format('truetype'),
     url(http://home.qyerstatic.com/common/fonts/home_font.svg#home_font?v=1461812276153) format('svg')
 }
 
