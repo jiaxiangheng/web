@@ -12,25 +12,25 @@
            <img src="img/login_logo2.png" alt=""/>
             <span class="title">登录</span>
         </div>
-        <div class="logintext">
+        <div class="logintext" id="logintext">
             <div class="write">
-                <div class="logintab">
-                    <a href="" class="current">账号登录</a>
-                    <a href="">短信快捷登录</a>
+                <div class="logintab" id="logintab">
+                    <a href="javascript:;" class="current" id="account">账号登录</a>
+                    <a href="javascript:;" class="current2" id="message">短信快捷登录</a>
                 </div>
-                <div class="loginform" id=" loginform">
+                <div class="loginform" id="loginform">
                     <form action="post">
-                        <input id="tel" type="text" value=""/>
-                        <span class="remind" id="remindps"></span>
-                        <input type="text" value="密码" class="password"/>
-                        <span class="remindps">啊大厦大声道<a href="" class="forget">忘记密码</a></span>
+                        <input id="tel" type="text" value="" placeholder="邮箱/手机号"/>
+                        <span class="remind" id="remindps1"></span>
+                        <input type="password" value="" class="password" placeholder="密码"/>
+                        <span class="remindps2"><a href="" class="forget">忘记密码</a></span>
 
                         <input type="button" class="loginbtn" value="登录"/>
                         <span class="f1"><input type="checkbox" value="Car" checked="checked" class="checked"/>
                         <label class="remember">记住我</label></span>
                     </form>
                 </div>
-                <div class="loginform1">
+                <div class="loginform1" id="loginform1">
                     <form action="post">
                         <div class="phone">
                             <srtong class="titles">86</srtong>
