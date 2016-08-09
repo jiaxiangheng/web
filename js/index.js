@@ -207,7 +207,7 @@
     function romainTime(){
         var oDate=new Date();
         var nowTime=oDate.getTime();
-        var tarTime=new Date('2016/07/28 00:00:00');
+        var tarTime=new Date('2016/08/28 00:00:00');
         var s=Math.floor((tarTime.getTime()-nowTime)/1000);
         var h=Math.floor(s/3600);
         s%=3600;
